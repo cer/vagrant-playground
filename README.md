@@ -1,1 +1,1 @@
-Installs Java and Scalatra on a VM
+A collection of Vagrant VMs
