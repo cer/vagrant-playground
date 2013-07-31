@@ -6,11 +6,11 @@ execute "install_cs" do
 	creates "#{::File.expand_path('~vagrant')}/bin/cs"	
 end	
 
-file "/etc/profile.d/setup_cs_path" do
+file "/etc/profile.d/setup_cs_path.sh" do
 	owner "vagrant"
 	group "vagrant"
 	mode "0644"
-	content 'export PATH=$PATH:~/vagrant/bin'
+	content 'export PATH=$PATH:~/vagrant/bin _JAVA_OPTIONS="-Xms512M -Xmx1024M"'
 end
 
 execute "install giter8" do
@@ -39,6 +39,6 @@ execute "build" do
 	user "vagrant"
 	group "vagrant"
 	cwd "/home/vagrant/hello-world"
-	environment "HOME" => "/home/vagrant"
+	environment "HOME" => "/home/vagrant", "_JAVA_OPTIONS" => "-Xms512M -Xmx1024M"
 	command  "./sbt container:start"
 end
