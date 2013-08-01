@@ -3,11 +3,20 @@
 
 Vagrant.configure("2") do |config|
 
+  # The name of the box to launch
+
   config.vm.box = "precise64"
+
+  # Where to find that box if it is not already available
+
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+
+  # Configure port 8080 proxying
+
   config.vm.network :forwarded_port, guest: 8080, host: 8080
 
- 
+  # Configure Chef to install JDK 7 and then Scalatra
+
   config.vm.provision :chef_solo do |chef| 
      
      chef.json = { "java" => { "jdk_version" => "7", "install_flavor" => "oracle", "oracle" => { "accept_oracle_download_terms" => true}} }
