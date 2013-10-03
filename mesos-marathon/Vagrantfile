@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  # The name of the box to launch
+
+  config.vm.box = "precise64"
+
+  # Where to find that box if it is not already available
+
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+
+  # Proxy marathon port
+
+  config.vm.network :forwarded_port, guest: 8080, host: 8080
+
+  # Proxy Mesos port
+
+  config.vm.network :forwarded_port, guest: 5050, host: 5050
+
+  # Share folder
+
+  config.vm.provision :chef_solo do |chef| 
+     
+     chef.add_recipe "marathon"
+
+  end
+
+end

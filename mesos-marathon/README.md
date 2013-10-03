@@ -1,0 +1,2 @@
+Configure a [Vagrant](http://www.vagrantup.com/) environment running [Mesos](http://mesos.apache.org/) and [Marathon](https://github.com/mesosphere/marathon). 
+See this [article](http://typesafe.com/blog/play-framework-grid-deployment-with-mesos) for an example of how you can then use this environment.
